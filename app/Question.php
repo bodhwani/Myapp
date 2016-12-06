@@ -19,6 +19,16 @@ class Question extends Model
         return $this->answers()->save($answer);
     }
 
+    public function addQuestion(Question $question , $userID){
+        $question->user_id = $userID;
+        //return $this->user()->save($);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
     public function path(){
 

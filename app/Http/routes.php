@@ -26,7 +26,9 @@ Route::get('/ask', 'QAController@ask');
 
 Route::get('/profile' , 'UserController@profile');
 
+Route::get('/myquestion', 'UserController@userQ');
 
+Route::get('/myanswer', 'UserController@userA');
 
 
 

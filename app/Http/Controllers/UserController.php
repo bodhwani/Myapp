@@ -5,6 +5,8 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Question;
+use App\Answer;
+
 
 
 class UserController extends Controller
@@ -22,10 +24,36 @@ class UserController extends Controller
 
         return view('users.profile', compact('user'));
 
+    }
+    
+    public function userQ(User $user){
+
+        $id = Auth::user()->id;
+        $user = User::with('questions.user')->find($id);
 
 
+        if($user) {
+            return view('users.userQ', compact('user'));
+        }
+        return 'No questions';
 
 
+        //return $question;
+    }
+
+    public function userA(User $user){
+
+        $id = Auth::user()->id;
+        $user = User::with('answers.user')->find($id);
+
+
+        if($user) {
+            return view('users.userA', compact('user'));
+        }
+        return 'No answers';
+
+
+        //return $question;
     }
 
 

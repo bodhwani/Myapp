@@ -10,6 +10,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
             $table->string('title');
             $table->string('tags');
             $table->string('subject');

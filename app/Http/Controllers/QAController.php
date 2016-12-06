@@ -9,6 +9,9 @@ use App\Http\Requests;
 
 use App\Question;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class QAController extends Controller
 {
 
@@ -17,7 +20,7 @@ class QAController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     public function index(){
 
         $questions = Question::all();
@@ -26,12 +29,14 @@ class QAController extends Controller
         return view('questions.index', compact('questions'));
     }
 
-    public function ask(){
+    public function ask(Question $question){
+
+
 
         return view('questions.ask');
     }
 
-    public function upload(Request $request, Question $question){
+    public function upload(Request $request){
 
         $question = new Question;
 
@@ -42,6 +47,11 @@ class QAController extends Controller
         $question->description = $request->description;
         $question->image= $request->image;
 
+
+
+        $id = Auth::user()->id;
+        $question->addQuestion($question , $id);
+        
         $question->save();
 
         return redirect('/');
@@ -50,10 +60,11 @@ class QAController extends Controller
 
     public function show(Question $question){
 
-//        $question = Question::with('answers.user')->find(1);
+       //  $question = Question::with('answers.user')->find(1);
 
 
         $question->load('answers.user');
+        //return $question;
 
         return view('questions.show', compact('question'));
     }

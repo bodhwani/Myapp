@@ -129,6 +129,16 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <button class="btn btn-primary" style="align-content: center"> <a href= "/profile" >{{ Auth::user()->name }}</a></button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <button class="btn btn-primary" style="align-content: center"> <a href= "/myquestion" >My Questions</a></button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                <button class="btn btn-primary" style="align-content: center"> <a href= "/myanswer" >My Answers</a></button>
+
+
+                {{--<button class="btn btn-primary" style="align-content: center"> <a href= "/profile" >{{ Auth::user()->name }}</a></button>--}}
+
 
 
 
